@@ -28,7 +28,7 @@ function CheckOTPForm({ phoneNumber, onBack, otpResponse }) {
 
       if (user.status !== 2) {
         navigate("/");
-        toast("پروفایل شما در انتظار تایید است",{icon:"👏"});
+        toast("پروفایل شما در انتظار تایید است", { icon: "👏" });
         return;
       }
 
@@ -78,6 +78,7 @@ function CheckOTPForm({ phoneNumber, onBack, otpResponse }) {
           value={otp}
           onChange={setOtp}
           numInputs={6}
+          shouldAutoFocus="true"
           renderSeparator={<span>-</span>}
           renderInput={(props) => <input type="text" {...props} />}
           containerStyle="flex flex-row-reverse gap-x-2 justify-center"

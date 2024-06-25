@@ -12,6 +12,7 @@ function TextField({ label, value, name, onChange }) {
         name={name}
         id={name}
         autoComplete="off"
+        autoFocus="true"
       />
     </div>
   );

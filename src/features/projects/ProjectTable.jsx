@@ -3,14 +3,14 @@ import Loading from "../../ui/Loading";
 import Table from "../../ui/Table";
 
 import ProjectRow from "./ProjectRow";
-import useOwnerProjects from "./UseOwnerProjects";
+import useOwnerProjects from "./useOwnerProjects.js";
 
 function ProjectTable() {
   const { isLoading, projects } = useOwnerProjects();
   console.log(isLoading, projects);
 
   if (isLoading) return <Loading />;
-  if (projects.length) return <Empty resourceName="پروژه" />;
+  if (!projects.length) return <Empty resourceName="پروژه" />;
 
   return (
     <Table>

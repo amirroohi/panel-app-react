@@ -3,14 +3,14 @@ import Loading from "../../ui/Loading";
 import toLocalDateShort from "../../utils/toLocalDateShort";
 import { toPersianNumbersWithCammas } from "../../utils/toPersianNumbers";
 import truncateText from "../../utils/truncateText";
-import useOwnerProjects from "./UseOwnerProjects";
+import useOwnerProjects from "./useOwnerProjects.js";
 
 function ProjectTable() {
   const { isLoading, projects } = useOwnerProjects();
   console.log(isLoading, projects);
 
   if (isLoading) return <Loading />;
-  if (projects.length) return <Empty resourceName="پروژه" />;
+  if (!projects.length) return <Empty resourceName="پروژه" />;
 
   return (
     <div className="bg-secondary-0 overflow-x-auto">
