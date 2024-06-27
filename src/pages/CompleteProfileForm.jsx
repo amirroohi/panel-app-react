@@ -6,20 +6,22 @@ import { completeProfile } from "../services/authService";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import Loading from "../ui/Loading";
+import { useForm } from "react-hook-form";
 
 function CompleteProfileForm() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [role, setRole] = useState("");
+  const { register, handleSubmit, getValues ,watch} = useForm();
+
+  // const [name, setName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [role, setRole] = useState("");
   const { data, error, isPending, mutateAsync } = useMutation({
     mutationFn: completeProfile,
   });
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async (data) => {
     try {
-      const { message, user } = await mutateAsync({ name, email, role });
+      const { message, user } = await mutateAsync(data);
       toast.success(message);
       if (user.status !== 2) {
         navigate("/");
@@ -37,35 +39,38 @@ function CompleteProfileForm() {
     <div className="container xl:max-w-screen-xl">
       <div className="flex justify-center">
         <div className="w-full sm:max-w-sm">
-          <form className="space-y-8 mt-4" onSubmit={handleSubmit}>
+          <form className="space-y-8 mt-4" onSubmit={handleSubmit(onSubmit)}>
             <TextField
               label="نام و نام خانوادگی"
               name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              register={register}
+              // value={name}
+              // onChange={(e) => setName(e.target.value)}
             />
             <TextField
               label="ایمیل"
               name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              register={register}
+              // value={email}
+              // onChange={(e) => setEmail(e.target.value)}
             />
             <div className="flex items-center justify-around">
               <RadioInput
                 label="کارفرما"
                 name="role"
+                register={register}
                 value="OWNER"
                 id="OWNER"
-                onChange={(e) => setRole(e.target.value)}
-                checked={role === "OWNER"}
+                // onChange={(e) => setRole(e.target.value)}
+                checked={watch("role") === "OWNER"}
               />
               <RadioInput
                 label="فریلنسر"
                 name="role"
                 value="FREELANCER"
                 id="FREELANCER"
-                onChange={(e) => setRole(e.target.value)}
-                checked={role === "FREELANCER"}
+                // onChange={(e) => setRole(e.target.value)}
+                checked={watch("role") === "FREELANCER"}
               />
             </div>
             <div>

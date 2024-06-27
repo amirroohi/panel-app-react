@@ -8,9 +8,10 @@ export default function useRemoveProject() {
     mutationFn: removeProjectApi,
     onSuccess: (data) => {
       toast.success(data.message);
-      //   when the element(project) has been deleted,
-      //    for deleting from ui component, should be
-      //    use invalidateQuery from useQueryClient then refresh the changes
+      //    when the element(project) has been deleted,
+      //   for deleting from ui component, should be
+      //   use invalidateQuery from useQueryClient
+      //   then refresh the changes
       queryClient.invalidateQueries({
         queryKey: ["owner-projects"],
       });
