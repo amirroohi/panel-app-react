@@ -1,4 +1,13 @@
-function RadioInput({ name, id, value, label, checked, register }) {
+function RadioInput({
+  name,
+  id,
+  value,
+  label,
+  register,
+  validationSchema,
+  errors,
+  watch
+}) {
   return (
     <div className="flex items-center gap-x-3">
       <input
@@ -6,11 +15,12 @@ function RadioInput({ name, id, value, label, checked, register }) {
         name={name}
         id={id}
         value={value}
-        checked={checked}
-        {...register(name)}
+        checked={watch(name) === value}
+        {...register(name, validationSchema)}
         className=" cursor-pointer w-4 h-4 form-radio text-primary-900 focus:ring-primary-900"
       />
       <label htmlFor={id}>{label}</label>
+
     </div>
   );
 }

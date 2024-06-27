@@ -7,9 +7,10 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import Loading from "../ui/Loading";
 import { useForm } from "react-hook-form";
+import RadioInputGroup from "../ui/RadioInputGroup";
 
 function CompleteProfileForm() {
-  const { register, handleSubmit, getValues ,watch} = useForm();
+  const { register, handleSubmit, errors, watch } = useForm();
 
   // const [name, setName] = useState("");
   // const [email, setEmail] = useState("");
@@ -44,35 +45,45 @@ function CompleteProfileForm() {
               label="نام و نام خانوادگی"
               name="name"
               register={register}
-              // value={name}
-              // onChange={(e) => setName(e.target.value)}
+              validationSchema={{
+                required: "نام و نام خانوادگی ضروری است",
+              }}
+              errors={errors}
             />
             <TextField
               label="ایمیل"
               name="email"
               register={register}
-              // value={email}
-              // onChange={(e) => setEmail(e.target.value)}
+              validationSchema={{
+                required: "ایمیل ضروری است",
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "ایمیل نامعتبر است",
+                },
+              }}
+              errors={errors}
             />
-            <div className="flex items-center justify-around">
-              <RadioInput
-                label="کارفرما"
-                name="role"
-                register={register}
-                value="OWNER"
-                id="OWNER"
-                // onChange={(e) => setRole(e.target.value)}
-                checked={watch("role") === "OWNER"}
-              />
-              <RadioInput
-                label="فریلنسر"
-                name="role"
-                value="FREELANCER"
-                id="FREELANCER"
-                // onChange={(e) => setRole(e.target.value)}
-                checked={watch("role") === "FREELANCER"}
-              />
-            </div>
+            <RadioInputGroup
+              errors={errors}
+              watch={watch}
+              register={register}
+              configs={{
+                name: "role",
+                validationSchema: {
+                  required: "انتخاب نقش ضروری است",
+                },
+                options: [
+                  {
+                    value: "OWNER",
+                    label: "کارفرما",
+                  },
+                  {
+                    value: "FREELANCER",
+                    label: "فریلنسر",
+                  },
+                ],
+              }}
+            />
             <div>
               {isPending ? (
                 <Loading />
