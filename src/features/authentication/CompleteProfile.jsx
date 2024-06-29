@@ -3,7 +3,7 @@ import TextField from "../../ui/TextField";
 function CompleteProfile() {
   return (
     <div>
-      <TextField />
+      <TextField focus={true} />
     </div>
   );
 }

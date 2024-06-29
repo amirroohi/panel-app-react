@@ -9,6 +9,7 @@ function SendOTPForm({ onSubmit, isSendingOtp, register }) {
           name="phoneNumber"
           label="شماره موبایل"
           register={register}
+          focus="true"
         />
         <div>
           {isSendingOtp ? (

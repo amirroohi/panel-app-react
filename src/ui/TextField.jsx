@@ -1,14 +1,13 @@
 function TextField({
   label,
   name,
-  focus = true,
+  focus = false,
   register,
   validationSchema,
   type = "text",
   required,
   errors,
 }) {
-  console.log({ ...register(name) });
   return (
     <div>
       <label className="mb-2 block text-secondary-700 " htmlFor={name}>

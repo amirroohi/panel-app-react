@@ -23,7 +23,7 @@ function ProjectRow({ project, index }) {
       <td>{toPersianNumbersWithCammas(project.budget)}</td>
       <td>{toLocalDateShort(project.deadline)}</td>
       <td>
-        <div className="flex flex-wrap items-center gap-2 max-w-[200px]">
+        <div className="flex flex-wrap items-center gap-2 max-w-[200px] h-11 overflow-hidden hover:overflow-y-auto ">
           {project.tags.map((tag) => (
             <span className="badge badge--secondary" key={tag}>
               {tag}
