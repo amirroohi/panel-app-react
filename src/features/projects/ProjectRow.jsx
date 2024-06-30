@@ -3,17 +3,19 @@ import toLocalDateShort from "../../utils/toLocalDateShort";
 import { toPersianNumbersWithCammas } from "../../utils/toPersianNumbers";
 import truncateText from "../../utils/truncateText";
 import { TbPencilMinus } from "react-icons/tb";
-import { HiOutlineTrash } from "react-icons/hi";
+import { HiEye, HiOutlineTrash } from "react-icons/hi";
 import Modal from "../../ui/Modal";
 import { useState } from "react";
 import ConfirmDelete from "../../ui/ConfirmDelete";
 import useRemoveProject from "./useRemoveProject";
 import CreateProjectForm from "./CreateProjectForm";
+import ToggleProjectStatus from "./ToggleProjectStatus";
+import { Link } from "react-router-dom";
 
 function ProjectRow({ project, index }) {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
-  const { isDeleting, removeProject } = useRemoveProject();
+  const { removeProject } = useRemoveProject();
 
   return (
     <Table.Row key={project._id}>
@@ -33,11 +35,7 @@ function ProjectRow({ project, index }) {
       </td>
       <td>{project.freelancer?.name || "-"}</td>
       <td>
-        {project.status === "OPEN" ? (
-          <span className="badge badge--success">باز</span>
-        ) : (
-          <span className="badge badge--danger">بسته</span>
-        )}
+        <ToggleProjectStatus project={project} />
       </td>
       <td>
         <div className="flex gap-x-2">
@@ -86,6 +84,11 @@ function ProjectRow({ project, index }) {
             </Modal>
           </>
         </div>
+      </td>
+      <td >
+        <Link to={project._id} className="flex justify-center" >
+          <HiEye className="w-5 h-5 text-primary-800 " />
+        </Link>
       </td>
     </Table.Row>
   );
