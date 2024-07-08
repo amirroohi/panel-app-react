@@ -1,8 +1,20 @@
+import UserAvatar from "../features/authentication/UserAvatar";
 import useUser from "../features/authentication/useUser";
+import HeaderMenu from "./HeaderMenu";
 
 function Header() {
-  const { data } = useUser();
-  // console.log(data);
-  return <div className="bg-secondary-300 py-4 px-8">app header</div>;
+  const { isLoading, user } = useUser();
+  return (
+    <div className="bg-secondary-300 py-4 px-8 border-secondary-200">
+      <div
+        className={`container xl:max-w-screen-lg flex items-center justify-end gap-x-8 ${
+          isLoading ? "blur-sm" : ""
+        }`}
+      >
+        <UserAvatar />
+        <HeaderMenu />
+      </div>
+    </div>
+  );
 }
 export default Header;

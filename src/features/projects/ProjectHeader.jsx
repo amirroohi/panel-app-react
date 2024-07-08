@@ -8,7 +8,7 @@ function ProjectHeader() {
 
   return (
     <div className="flex flex-row justify-between items-center mb-8">
-      <h1 className="text-xl font-bold">پروژه های شما</h1>
+      <h1 className="text-xl font-bold text-secondary-600">پروژه های شما</h1>
       <Modal
         title={"پروژه جدید"}
         open={isCreateOpen}

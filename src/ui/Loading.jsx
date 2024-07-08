@@ -1,6 +1,6 @@
 import { ThreeDots } from "react-loader-spinner";
 
-function Loading({width = "70", height = "80"}) {
+function Loading({ width = "70", height = "80" }) {
   return (
     <ThreeDots
       visible={true}
