@@ -1,7 +1,9 @@
+import DashboardLayout from "../features/owner/DashboardLayout";
+
 function OwnerDashboard() {
   return (
-    <div className="">
-      <div>داشبورد کارفرما</div>
+    <div className="text-xl font-bold text-secondary-600">
+      <DashboardLayout />
     </div>
   );
 }
