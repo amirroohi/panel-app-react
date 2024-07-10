@@ -1,4 +1,4 @@
-import DashboardHeader from "./DashboardHeader";
+import DashboardHeader from "../../ui/DashboardHeader";
 import Stats from "./stats";
 import useOwnerProjects from "../projects/useOwnerProjects";
 import Loading from "../../ui/Loading";

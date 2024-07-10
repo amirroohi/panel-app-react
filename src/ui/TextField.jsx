@@ -15,9 +15,6 @@ function TextField({
         {required && <span className="text-error">*</span>}
       </label>
       <input
-        // value={value}
-        // onChange={onChange}
-        // name={name}
         {...register(name, validationSchema)}
         className="textField__input"
         type={type}

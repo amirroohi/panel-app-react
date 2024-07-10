@@ -130,7 +130,7 @@ function CreateProjectForm({ onClose, projectToEdit = {} }) {
         />
       </div>
       <DatePickerField date={date} setDate={setDate} label="آخرین مهلت" />
-      <div className="">
+      <div className="!mt-8">
         {iscreating ? (
           <Loading />
         ) : (
