@@ -18,6 +18,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import ProtectedRoute from "./ui/ProtectedRoute";
 import AdminLayout from "./features/admin/AdminLayout";
 import AdminDashboard from "./pages/AdminDashboard";
+import Users from "./pages/Users";
 
 function App() {
   const queryClient = new QueryClient();
@@ -66,9 +67,9 @@ function App() {
           >
             <Route index element={<Navigate to="dashboard" replace />} />
             <Route path="dashboard" element={<AdminDashboard />} />
-            {/* <Route path="proposals" element={<Proposals />} /> */}
-            {/* <Route path="projects" element={<SubmittedProjects />} /> */}
-            {/* <Route path="proposals/:id" element={<Project />} /> */}
+            <Route path="users" element={<Users />} />
+            <Route path="proposals" element={<Proposals />} />
+            <Route path="projects" element={<SubmittedProjects />} />
           </Route>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />

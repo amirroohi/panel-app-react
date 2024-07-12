@@ -1,32 +1,25 @@
-import {
-  HiCollection,
-  HiCurrencyDollar,
-  HiOutlineViewGrid,
-} from "react-icons/hi";
-import { toPersianNumbersWithCammas } from "../../utils/toPersianNumbers";
+import { HiCollection, HiUsers, HiOutlineViewGrid } from "react-icons/hi";
 import Stat from "../../ui/stat";
 
 function Stats({ proposals, projects, users }) {
-
-const usersDetail = users
   return (
     <div className="grid grid-cols-3 gap-x-8 gap-y-4">
       <Stat
+        color="yellow"
+        title="کاربران"
+        value={users}
+        icon={<HiUsers className="w-20 h-20" />}
+      />
+      <Stat
         color="primary"
         title="درخواست ها"
-        value={numOfProposals}
+        value={proposals}
         icon={<HiOutlineViewGrid className="w-20 h-20" />}
       />
       <Stat
         color="green"
-        title="درخواست های تایید شده"
-        value={numOfAcceptedProposals}
-        icon={<HiCurrencyDollar className="w-20 h-20" />}
-      />
-      <Stat
-        color="yellow"
-        title="کیف پول"
-        value={toPersianNumbersWithCammas(balance)}
+        title="پروژه ها"
+        value={projects}
         icon={<HiCollection className="w-20 h-20" />}
       />
     </div>

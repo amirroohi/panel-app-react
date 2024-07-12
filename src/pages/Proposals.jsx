@@ -4,7 +4,7 @@ function Proposals() {
   return (
     <div>
       <h1 className="font-black mb-8 text-secondary-700 text-xl">
-        درخواست های شما
+        لیست درخواست های ثبت شده
       </h1>
       <ProposalsTable />
     </div>
