@@ -9,11 +9,13 @@ function Filter({ options, filterField }) {
     setSearchParams(searchParams);
   }
 
+  // console.log(Math.random() * 100000);
+
   return (
     <div className="flex items-center gap-x-2 text-xs">
       <span>وضعیت</span>
       <div
-        className="flex items-center gap-x-4 
+        className="flex items-center gap-x-4 p-1
       border border-secondary-100 bg-secondary-0 rounded-lg"
       >
         {options.map((option) => {
@@ -23,7 +25,7 @@ function Filter({ options, filterField }) {
               key={option.value}
               onClick={() => handleClick(option.value)}
               disabled={isActive}
-              className={`whitespace-nowrap rounded-md py-2 px-4
+              className={`whitespace-nowrap rounded-md py-1 px-4
                font-bold transition-all duration-300
                ${
                  isActive
