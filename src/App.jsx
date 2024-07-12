@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
-import CompleteProfileForm from "./pages/CompleteProfileForm";
+import CompleteProfileForm from "./pages/CompleteProfile";
 import OwnerDashboard from "./pages/OwnerDashboard";
 import Projects from "./pages/Projects";
 import Project from "./pages/Project";

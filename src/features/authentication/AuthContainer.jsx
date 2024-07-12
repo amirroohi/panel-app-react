@@ -1,12 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SendOTPForm from "./SendOTPForm";
 import CheckOTPForm from "./CheckOTPForm";
 import { useMutation } from "@tanstack/react-query";
 import { getOtp } from "../../services/authService";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
+import useUser from "./useUser";
+import { useNavigate } from "react-router-dom";
 
 function AuthContainer() {
+  const navigate = useNavigate();
+  const [step, setStep] = useState(1);
+  const { register, handleSubmit, getValues } = useForm();
+  const { user } = useUser();
+
+  useEffect(() => {
+    if (user) navigate("/", { replace: true });
+  }, [navigate, user]);
+
   const {
     data: otpResponse,
     isPending: isSendingOtp,
@@ -15,12 +26,7 @@ function AuthContainer() {
     mutationFn: getOtp,
   });
 
-  const [step, setStep] = useState(1);
-  // const [phoneNumber, setPhoneNumber] = useState("");
-  const { register, handleSubmit, getValues } = useForm();
-
   const sendOtpHandler = async (data) => {
-    // console.log(data);
     try {
       const { message } = await mutateAsync(data);
       setStep(2);
@@ -40,8 +46,6 @@ function AuthContainer() {
             onSubmit={handleSubmit(sendOtpHandler)}
             setStep={setStep}
             register={register}
-            // phoneNumber={phoneNumber}
-            // setPhoneNumber={setPhoneNumber}
           />
         );
       case 2:
